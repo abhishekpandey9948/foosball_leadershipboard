@@ -1,5 +1,4 @@
 class Team < ApplicationRecord
-  self.table_name = "team"
 
   before_create :set_status
   has_many :matches

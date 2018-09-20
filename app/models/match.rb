@@ -1,5 +1,4 @@
 class Match < ApplicationRecord
-  self.table_name = "match"
 
   before_save :set_teams_score
   before_save :set_players_score

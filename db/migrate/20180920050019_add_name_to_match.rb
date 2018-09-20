@@ -1,5 +1,5 @@
 class AddNameToMatch < ActiveRecord::Migration[5.2]
   def change
-    add_column :match, :name, :string
+    add_column :matches, :name, :string
   end
 end

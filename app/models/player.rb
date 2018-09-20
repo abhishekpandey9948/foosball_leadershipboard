@@ -1,5 +1,4 @@
 class Player < ApplicationRecord
-  self.table_name = "player"
 
   before_create :set_status
 
@@ -11,5 +10,5 @@ class Player < ApplicationRecord
   def set_status
     self.status = ACTIVE
   end
-
+w
 end

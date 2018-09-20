@@ -1,6 +1,6 @@
 class CreateTablePlayers < ActiveRecord::Migration[5.2]
   def change
-    create_table :player do |t|
+    create_table :players do |t|
       t.string :name
       t.integer :status
       t.integer :score
