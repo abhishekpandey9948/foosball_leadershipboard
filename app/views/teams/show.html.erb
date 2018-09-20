@@ -7,12 +7,12 @@
 
 <p>
   <strong>Player1:</strong>
-  <%= @team.player1_id %>
+  <%= @team.player1.name %>
 </p>
 
 <p>
   <strong>Player2:</strong>
-  <%= @team.player2_id %>
+  <%= @team.player2.name  %>
 </p>
 
 <p>
@@ -20,5 +20,4 @@
   <%= @team.score %>
 </p>
 
-<%= link_to 'Edit', edit_team_path(@team) %> |
 <%= link_to 'Back', teams_path %>

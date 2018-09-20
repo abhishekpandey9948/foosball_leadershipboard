@@ -16,14 +16,18 @@
     <%= form.text_area :name %>
   </div>
 
-  <div class="field">
-    <%= form.label :player1_id %>
-    <%= form.text_field :player1_id %>
+  <div class="form-group">
+    <%= f.label :name, "Player1:", class: "col-md-4 control-label" %>
+    <div class="col-md-8">
+      <%= f.select :player1_id, options_for_select(Player.all.map { |p| [p.name + "["+p.employee_id.to_s+"]", p.id] })%>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :player2_id %>
-    <%= form.text_field :player2_id %>
+  <div class="form-group">
+    <%= f.label :name, "Player2", class: "col-md-4 control-label" %>
+    <div class="col-md-8">
+      <%= f.select :player2_id, options_for_select(Player.all.map { |p| [p.name + "["+p.employee_id.to_s+"]", p.id] })%>
+    </div>
   </div>
 
   <div class="field">
