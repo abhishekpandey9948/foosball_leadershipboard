@@ -14,6 +14,10 @@ class MatchesTest < ApplicationSystemTestCase
     visit matches_url
     click_on "New Match"
 
+    fill_in "Team1", with: @match.team1_id
+    fill_in "Team1 Winner", with: @match.team1_winner
+    fill_in "Team2", with: @match.team2_id
+    fill_in "Winner Up Points", with: @match.winner_up_points
     click_on "Create Match"
 
     assert_text "Match was successfully created"
@@ -24,6 +28,10 @@ class MatchesTest < ApplicationSystemTestCase
     visit matches_url
     click_on "Edit", match: :first
 
+    fill_in "Team1", with: @match.team1_id
+    fill_in "Team1 Winner", with: @match.team1_winner
+    fill_in "Team2", with: @match.team2_id
+    fill_in "Winner Up Points", with: @match.winner_up_points
     click_on "Update Match"
 
     assert_text "Match was successfully updated"

@@ -11,6 +11,26 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= form.label :team1_id %>
+    <%= form.text_field :team1_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :team2_id %>
+    <%= form.text_field :team2_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :team1_winner %>
+    <%= form.check_box :team1_winner %>
+  </div>
+
+  <div class="field">
+    <%= form.label :winner_up_points %>
+    <%= form.text_field :winner_up_points %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
