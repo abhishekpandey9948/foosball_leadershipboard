@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2018_09_20_050019) do
 
   create_table "team", force: :cascade do |t|
     t.string "name"
+    t.integer "score"
     t.integer "player1_id"
     t.integer "player2_id"
     t.datetime "created_at", null: false

@@ -11,6 +11,26 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_area :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :player1_id %>
+    <%= form.text_field :player1_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :player2_id %>
+    <%= form.text_field :player2_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :score %>
+    <%= form.text_field :score %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

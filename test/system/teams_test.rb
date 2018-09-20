@@ -14,6 +14,10 @@ class TeamsTest < ApplicationSystemTestCase
     visit teams_url
     click_on "New Team"
 
+    fill_in "Name", with: @team.name
+    fill_in "Player1", with: @team.player1_id
+    fill_in "Player2", with: @team.player2_id
+    fill_in "Score", with: @team.score
     click_on "Create Team"
 
     assert_text "Team was successfully created"
@@ -24,6 +28,10 @@ class TeamsTest < ApplicationSystemTestCase
     visit teams_url
     click_on "Edit", match: :first
 
+    fill_in "Name", with: @team.name
+    fill_in "Player1", with: @team.player1_id
+    fill_in "Player2", with: @team.player2_id
+    fill_in "Score", with: @team.score
     click_on "Update Team"
 
     assert_text "Team was successfully updated"
