@@ -2,22 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1f2f9c4-e2f4-4015-9a5f-9931c56a5de4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/controllers/match_controller.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/controllers/player_controller.rb" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/controllers/team_controller.rb" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.generators" afterPath="$PROJECT_DIR$/.idea/.generators" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/foosball.iml" afterPath="$PROJECT_DIR$/.idea/foosball.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/match.rb" afterPath="$PROJECT_DIR$/app/models/match.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/player.rb" afterPath="$PROJECT_DIR$/app/models/player.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/team.rb" afterPath="$PROJECT_DIR$/app/models/team.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180919201807_create_table_players.rb" afterPath="$PROJECT_DIR$/db/migrate/20180919201807_create_table_players.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180919201818_create_table_teams.rb" afterPath="$PROJECT_DIR$/db/migrate/20180919201818_create_table_teams.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180919201826_create_table_match.rb" afterPath="$PROJECT_DIR$/db/migrate/20180919201826_create_table_match.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180919235033_add_employee_id_to_player.rb" afterPath="$PROJECT_DIR$/db/migrate/20180919235033_add_employee_id_to_player.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20180920050019_add_name_to_match.rb" afterPath="$PROJECT_DIR$/db/migrate/20180920050019_add_name_to_match.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gemfile" afterPath="$PROJECT_DIR$/Gemfile" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -63,11 +48,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="players_controller.rb" pinned="false" current-in-tab="true">
+      <file leaf-file-name="players_controller.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/players_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="5" lean-forward="true" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
+            <state relative-caret-position="255">
+              <caret line="17" column="24" lean-forward="true" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Gemfile" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Gemfile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -78,16 +73,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="90">
               <caret line="6" column="18" lean-forward="false" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="20180919201818_create_table_teams.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db/migrate/20180919201818_create_table_teams.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="23" lean-forward="false" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -174,7 +159,6 @@
         <option value="$PROJECT_DIR$/app/views/dashboard/match_leadership_board.html.erb" />
         <option value="$PROJECT_DIR$/app/views/leadershipboard/player.html.erb" />
         <option value="$PROJECT_DIR$/app/views/leadershipboard/player.html.haml" />
-        <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/app/views/player/show_players.html.erb" />
         <option value="$PROJECT_DIR$/app/views/player/show.html.erb" />
         <option value="$PROJECT_DIR$/app/views/team/show.html.erb" />
@@ -195,6 +179,7 @@
         <option value="$PROJECT_DIR$/app/models/player.rb" />
         <option value="$PROJECT_DIR$/app/controllers/players_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/teams_controller.rb" />
+        <option value="$PROJECT_DIR$/Gemfile" />
       </list>
     </option>
   </component>
@@ -286,7 +271,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$2/Languages" value="ruby" />
-    <property name="SearchEverywhereHistoryKey" value="route&#9;FILE&#9;file:///Users/abhishek/git/foosball/config/routes.rb&#10;team.rb&#9;FILE&#9;file:///Users/abhishek/git/foosball/app/models/team.rb" />
+    <property name="SearchEverywhereHistoryKey" value="gemfil&#9;FILE&#9;file:///Users/abhishek/git/foosball/Gemfile&#10;route&#9;FILE&#9;file:///Users/abhishek/git/foosball/config/routes.rb&#10;team.rb&#9;FILE&#9;file:///Users/abhishek/git/foosball/app/models/team.rb" />
     <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.ruby.settings.RubyActiveModuleSdkConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -466,12 +451,12 @@
       <workItem from="1537442700477" duration="37000" />
       <workItem from="1537442751463" duration="3790000" />
       <workItem from="1537447877767" duration="2951000" />
-      <workItem from="1537455735627" duration="1310000" />
+      <workItem from="1537455735627" duration="1572000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32504000" />
+    <option name="totallyTimeSpent" value="32766000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -629,14 +614,6 @@
     <entry file="file://$PROJECT_DIR$/app/views/leadershipboard/match.html.haml" />
     <entry file="file://$PROJECT_DIR$/app/views/leadershipboard/player.html.haml" />
     <entry file="file://$PROJECT_DIR$/app/views/player/show_players.html.haml" />
-    <entry file="file://$PROJECT_DIR$/Gemfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="19" lean-forward="false" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/player/show.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -827,8 +804,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/players_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="5" lean-forward="true" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
+        <state relative-caret-position="255">
+          <caret line="17" column="24" lean-forward="true" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gemfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding />
         </state>
       </provider>
