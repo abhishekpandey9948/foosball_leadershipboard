@@ -8,9 +8,6 @@ class Match < ApplicationRecord
 
   attr_accessor :team1_score, :team2_score
 
-  ACTIVE = 1
-  INACTIVE = 0
-
   def winner_team
     return team1 if self.team1_winner?
     return team2
