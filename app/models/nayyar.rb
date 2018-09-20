@@ -1,0 +1,2 @@
+class Nayyar < ApplicationRecord
+end

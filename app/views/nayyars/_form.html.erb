@@ -1,0 +1,27 @@
+<%= form_with(model: nayyar, local: true) do |form| %>
+  <% if nayyar.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(nayyar.errors.count, "error") %> prohibited this nayyar from being saved:</h2>
+
+      <ul>
+      <% nayyar.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_area :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :age %>
+    <%= form.text_field :age %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
