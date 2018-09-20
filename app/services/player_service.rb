@@ -26,6 +26,10 @@ module Services
       return "Player created :)"
     end
 
+    def self.show_players page
+      Player.where(status: Player::ACTIVE).order('score desc').paginate(:page => page, :per_page => 5)
+    end
+
   end
 end
 

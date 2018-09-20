@@ -1,9 +1,5 @@
 class PlayerController < ActionController::Base
 
-  def index
-    
-  end
-
   def new
     @player = Player.new
   end
@@ -12,5 +8,8 @@ class PlayerController < ActionController::Base
     render json: ::Services::PlayerService.new.create_player(params['player'])
   end
 
+  def show
+    @players = ::Services::PlayerService.show_players(params[:page])
+  end
 
 end

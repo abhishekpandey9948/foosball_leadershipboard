@@ -1,6 +1,7 @@
 class Match < ApplicationRecord
   self.table_name = "match"
 
+  before_save :set_teams_score
   before_save :set_players_score
 
   belongs_to :team1, foreign_key: "team1_id", class_name: "Team"
@@ -23,11 +24,29 @@ class Match < ApplicationRecord
 
   private
 
+  def set_teams_score
+    begin
+      winner_team = self.winner_team
+      winner_team.score = winner_team.score + 10
+      winner_team.save!
+
+      loser_team = self.loser_team
+      loser_team.score = loser_team.score + 10
+      loser_team.save!
+    rescue Exception => e
+      raise ActiveRecord::Rollback.new, "Could not update teams score"
+    end
+  end
+
   def set_players_score
-    self.winner_team.players.each{|player| player.score = player.score.to_i + 10
-    player.save}
-    self.loser_team.players.each{|player| player.score = player.score.to_i - 5
-    player.save}
+    begin
+      self.winner_team.players.each{|player| player.score = player.score.to_i + 10
+      player.save!}
+      self.loser_team.players.each{|player| player.score = player.score.to_i - 5
+      player.save!}
+    rescue Exception => e
+      raise ActiveRecord::Rollback.new, "Could not update players score"
+    end
   end
 
 end

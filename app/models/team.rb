@@ -2,7 +2,7 @@ class Team < ApplicationRecord
   self.table_name = "team"
 
   before_create :set_status
-
+  has_many :matches
   belongs_to :player1, foreign_key: "player1_id", class_name: "Player"
   belongs_to :player2, foreign_key: "player2_id", class_name: "Player"
 
