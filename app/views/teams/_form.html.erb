@@ -1,4 +1,4 @@
-<%= form_with(model: team, local: true) do |form| %>
+<%= form_with(model: team, local: true, :html => {:class => "form-horizontal"}) do |form| %>
   <% if team.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(team.errors.count, "error") %> prohibited this team from being saved:</h2>
@@ -11,22 +11,26 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_area :name %>
-  </div>
-
   <div class="form-group">
-    <%= f.label :name, "Player1:", class: "col-md-4 control-label" %>
+    <%= form.label :name, class: "col-md-1 control-label"%>
     <div class="col-md-8">
-      <%= f.select :player1_id, options_for_select(Player.all.map { |p| [p.name + "["+p.employee_id.to_s+"]", p.id] })%>
+      <%= form.text_field :name %>
     </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :name, "Player2", class: "col-md-4 control-label" %>
+    <%= form.label :name, "Player1:", class: "col-md-1 control-label" %>
     <div class="col-md-8">
-      <%= f.select :player2_id, options_for_select(Player.all.map { |p| [p.name + "["+p.employee_id.to_s+"]", p.id] })%>
+      <%= form.select :player1_id, options_for_select(Player.all.map { |p| [p.name + " ["+p.employee_id.to_s+"]", p.id] })%>
+      *(name [employee_id])
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :name, "Player2", class: "col-md-1 control-label" %>
+    <div class="col-md-8">
+      <%= form.select :player2_id, options_for_select(Player.all.map { |p| [p.name + " ["+p.employee_id.to_s+"]", p.id] })%>
+      *(name [employee_id])
     </div>
   </div>
 

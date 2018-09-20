@@ -1,5 +1,7 @@
 class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
+  before_action :set_team_from_parameters, only: [:create]
+  before_action :validate_team_parameters, only: [:create]
 
   # GET /teams
   # GET /teams.json
@@ -26,17 +28,16 @@ class TeamsController < ApplicationController
   # POST /teams.json
   def create
     @team = Team.new(team_params)
-
     respond_to do |format|
-      if @team.save
+      begin
+        @team.save!
         format.html { redirect_to @team, notice: 'Team was successfully created.' }
         format.json { render :show, status: :created, location: @team }
-      else
+      rescue => e
         format.html { render :new }
         format.json { render json: @team.errors, status: :unprocessable_entity }
       end
     end
-    # render json: ::Services::TeamService.new.create_team(params['team'])
   end
 
   # PATCH/PUT /teams/1
@@ -65,12 +66,12 @@ class TeamsController < ApplicationController
 
   private
     def validate_team_parameters
-      @team.errors.add("Name not be blank") if @team.name.blank?
-      @team.errors.add("Player1 not be blank") if @team.player1_id.blank?
-      @team.errors.add("Player2 not be blank") if @team.player2_id.blank?
-      @team.errors.add("Players must be different") if @team.player1_id == @team.player2_id
-      @team.errors.add("Already team exist for these players") if Team.find_team_by_players( @team.player1_id, @team.player2_id).present?
-      raise ActionController::BadRequest.new, exception_msg if @team.errors.present?
+      @team.errors.add(:team, "Name not be blank") if @team.name.blank?
+      @team.errors.add(:team, "Player1 not be blank") if @team.player1_id.blank?
+      @team.errors.add(:team, "Player2 not be blank") if @team.player2_id.blank?
+      @team.errors.add(:team, "Players must be different") if @team.player1_id == @team.player2_id
+      @team.errors.add(:team, "Already team exist for these players") if Team.find_team_by_players( @team.player1_id, @team.player2_id).present?
+      return render json: @team.errors, status: :unprocessable_entity if @team.errors.present?
     end
 
     # Use callbacks to share common setup or constraints between actions.
@@ -81,5 +82,9 @@ class TeamsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def team_params
       params.require(:team).permit(:name, :player1_id, :player2_id, :score)
+    end
+
+    def set_team_from_parameters
+      @team = Team.new(team_params)
     end
 end

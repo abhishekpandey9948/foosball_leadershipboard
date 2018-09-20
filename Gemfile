@@ -7,8 +7,10 @@ ruby '2.4.1 '
 gem 'pg', '~> 0.18'
 
 #frontend
-gem 'bootstrap'
 gem 'jquery-rails'
+
+gem 'bootstrap', '~> 4.1.3'
+gem 'sass-rails', '~> 5.0'
 
 gem 'will_paginate'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

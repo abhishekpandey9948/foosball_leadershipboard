@@ -1,41 +1,42 @@
-<%= form_with(model: match, local: true) do |form| %>
+<%= form_with(model: match, local: true, :html => {:class => "form-horizontal"}) do |form| %>
 
   <div class="form-group">
-    <%= f.label :name, "Name:", class: "col-md-4 control-label" %>
+    <%= form.label :name, "Name:", class: "col-md-2 control-label" %>
     <div class="col-md-8">
-      <%= f.text_field :name, class: "form-control" %>
+      <%= form.text_field :name, class: "form-control" %>
     </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :name, "Team1:", class: "col-md-4 control-label" %>
+    <%= form.label :name, "Team1:", class: "col-md-2 control-label" %>
     <div class="col-md-8">
-      <%= f.select :team1_id, options_for_select(Team.all.map { |p| [p.name, p.id] })%>
+      <%= form.select :team1_id, options_for_select(Team.all.map { |p| [p.name, p.id] })%>
     </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :name, "Team1 Score:", class: "col-md-4 control-label" %>
+    <%= form.label :name, "Team1 Score:", class: "col-md-2 control-label" %>
     <div class="col-md-8">
-      <%= f.text_field :team1_score, class: "form-control" %>
+      <%= form.text_field :team1_score, class: "form-control" %>
     </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :name, "Team2", class: "col-md-4 control-label" %>
+    <%= form.label :name, "Team2", class: "col-md-2 control-label" %>
     <div class="col-md-8">
-      <%= f.select :team2_id, options_for_select(Team.all.map { |p| [p.name, p.id] })%>
+      <%= form.select :team2_id, options_for_select(Team.all.map { |p| [p.name, p.id] })%>
     </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :name, "Team2 Score:", class: "col-md-4 control-label" %>
+    <%= form.label :name, "Team2 Score:", class: "col-md-2 control-label" %>
     <div class="col-md-8">
-      <%= f.text_field :team2_score, class: "form-control" %>
+      <%= form.text_field :team2_score, class: "form-control" %>
     </div>
   </div>
 
-  <div class="actions">
+    <br>
+  <div class="actions col-md-2 control-label">
     <%= form.submit %>
   </div>
 <% end %>

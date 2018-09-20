@@ -1,5 +1,7 @@
 class PlayersController < ApplicationController
   before_action :set_player, only: [:show, :edit, :update, :destroy]
+  before_action :set_player_from_parameters, only: [:create]
+  before_action :validate_player_parameters, only: [:create]
 
   # GET /players
   # GET /players.json
@@ -26,17 +28,16 @@ class PlayersController < ApplicationController
   # POST /players.json
   def create
     @player = Player.new(player_params)
-
     respond_to do |format|
-      if @player.save
+      begin
+        @player.save!
         format.html { redirect_to @player, notice: 'Player was successfully created.' }
         format.json { render :show, status: :created, location: @player }
-      else
+      rescue => e
         format.html { render :new }
         format.json { render json: @player.errors, status: :unprocessable_entity }
       end
     end
-    # render json: ::Services::PlayerService.new.create_player(params['player'])
   end
 
   # PATCH/PUT /players/1
@@ -64,6 +65,12 @@ class PlayersController < ApplicationController
   end
 
   private
+
+    def validate_player_parameters
+      @player.errors.add(:player, "Name not be blank") if @player.name.blank?
+      @player.errors.add(:player, "Invalid Employee Id") if @player.employee_id.blank? or @player.employee_id.to_i == 0
+      return render json: @player.errors, status: :unprocessable_entity if @player.errors.present?
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_player
       @player = Player.find(params[:id])
@@ -71,6 +78,10 @@ class PlayersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def player_params
-      params.require(:player).permit(:name, :score)
+      params.require(:player).permit(:name, :score, :employee_id)
+    end
+
+    def set_player_from_parameters
+      @player = Player.new(player_params)
     end
 end

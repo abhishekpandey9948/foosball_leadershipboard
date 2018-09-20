@@ -1,5 +1,7 @@
 class MatchesController < ApplicationController
   before_action :set_match, only: [:show, :edit, :update, :destroy]
+  before_action :set_match_from_parameters, only: [:create]
+  before_action :validate_match_parameters, only: [:create]
 
   # GET /matches
   # GET /matches.json
@@ -24,18 +26,12 @@ class MatchesController < ApplicationController
   # POST /matches
   # POST /matches.json
   def create
-    @match = Match.new(match_params)
-    begin
-      validate_match_parameters
-      set_winner_and_points
-    rescue => e
-      format.json { render json: @prescription.errors, status: :unprocessable_entity }
-    end
     respond_to do |format|
-      if @match.save
+      begin
+        @match.save!
         format.html { redirect_to @match, notice: 'Match was successfully created.' }
         format.json { render :show, status: :created, location: @match }
-      else
+      rescue => e
         format.html { render :new }
         format.json { render json: @match.errors, status: :unprocessable_entity }
       end
@@ -69,19 +65,15 @@ class MatchesController < ApplicationController
 
   private
 
-  def validate_match_parameters
-    @match.errors.add("Name not be blank") if @match.name.blank?
-    @match.errors.add("Team1 not be blank") if @match.team1_id.blank?
-    @match.errors.add("Team2 not be blank") if @match.team2_id.blank?
-    @match.errors.add("Teams must be different") if @match.team1_id == @match.team2_id
-    @match.errors.add("Invalid scores") if (@match.team1_score.blank? or @match.team2_score.blank? or @match.team1_score.to_i == @match.team2_score.to_i)
-    raise ActionController::BadRequest.new, exception_msg if @match.errors.present?
-  end
-
-  def set_winner_and_points
-    @match.team1_winner = @match.team1_score.to_i > @match.team2_score.to_i
-    @match.winner_up_points = (@match.team1_score.to_i - @match.team2_score.to_i).abs
-  end
+    def validate_match_parameters
+      @match.errors.add(:match, "Name not be blank") if @match.name.blank?
+      @match.errors.add(:match, "Team1 not be blank") if @match.team1_id.blank?
+      @match.errors.add(:match, "Team2 not be blank") if @match.team2_id.blank?
+      @match.errors.add(:match, "Teams must be different") if @match.team1_id == @match.team2_id
+      @match.errors.add(:match, "Players must be unique") if (@match.team1.players & @match.team2.players).present?
+      @match.errors.add(:match, "Invalid scores") if (@match.team1_score.blank? or @match.team2_score.blank? or @match.team1_score.to_i == 0 or @match.team2_score.to_i == 0 or @match.team1_score.to_i == @match.team2_score.to_i)
+      return render json: @match.errors, status: :unprocessable_entity if @match.errors.present?
+    end
 
     # Use callbacks to share common setup or constraints between actions.
     def set_match
@@ -90,6 +82,10 @@ class MatchesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def match_params
-      params.require(:match).permit(:team1_id, :team2_id, :team1_winner, :winner_up_points)
+      params.require(:match).permit(:team1_id, :team2_id, :team1_winner, :name, :team1_score, :team2_score)
+    end
+
+    def set_match_from_parameters
+      @match = Match.new(match_params)
     end
 end
