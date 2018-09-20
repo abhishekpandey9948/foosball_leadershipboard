@@ -11,7 +11,7 @@
         <th>Team2</th>
         <th>Winner Team</th>
         <th>Match Date</th>
-        <th colspan="3">Actions</th>
+        <th>Actions</th>
       </tr>
     </thead>
 
@@ -23,7 +23,7 @@
           <td><%= match.team2.name %></td>
           <td><%= ((match.team1_winner?) ? match.team1.name : match.team2.name) %></td>
           <td><%= match.created_at.to_date %></td>
-          <td><%= link_to 'Show', match %></td>
+          <td><%= link_to 'Match details', match %></td>
         </tr>
       <% end %>
     </tbody>
