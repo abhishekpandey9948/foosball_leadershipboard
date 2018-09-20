@@ -64,6 +64,15 @@ class TeamsController < ApplicationController
   end
 
   private
+    def validate_team_parameters
+      @team.errors.add("Name not be blank") if @team.name.blank?
+      @team.errors.add("Player1 not be blank") if @team.player1_id.blank?
+      @team.errors.add("Player2 not be blank") if @team.player2_id.blank?
+      @team.errors.add("Players must be different") if @team.player1_id == @team.player2_id
+      @team.errors.add("Already team exist for these players") if Team.find_team_by_players( @team.player1_id, @team.player2_id).present?
+      raise ActionController::BadRequest.new, exception_msg if @team.errors.present?
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_team
       @team = Team.find(params[:id])

@@ -25,7 +25,12 @@ class MatchesController < ApplicationController
   # POST /matches.json
   def create
     @match = Match.new(match_params)
-
+    begin
+      validate_match_parameters
+      set_winner_and_points
+    rescue => e
+      format.json { render json: @prescription.errors, status: :unprocessable_entity }
+    end
     respond_to do |format|
       if @match.save
         format.html { redirect_to @match, notice: 'Match was successfully created.' }
@@ -63,6 +68,21 @@ class MatchesController < ApplicationController
   end
 
   private
+
+  def validate_match_parameters
+    @match.errors.add("Name not be blank") if @match.name.blank?
+    @match.errors.add("Team1 not be blank") if @match.team1_id.blank?
+    @match.errors.add("Team2 not be blank") if @match.team2_id.blank?
+    @match.errors.add("Teams must be different") if @match.team1_id == @match.team2_id
+    @match.errors.add("Invalid scores") if (@match.team1_score.blank? or @match.team2_score.blank? or @match.team1_score.to_i == @match.team2_score.to_i)
+    raise ActionController::BadRequest.new, exception_msg if @match.errors.present?
+  end
+
+  def set_winner_and_points
+    @match.team1_winner = @match.team1_score.to_i > @match.team2_score.to_i
+    @match.winner_up_points = (@match.team1_score.to_i - @match.team2_score.to_i).abs
+  end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_match
       @match = Match.find(params[:id])

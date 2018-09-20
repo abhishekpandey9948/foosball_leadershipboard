@@ -30,7 +30,8 @@ class Match < ApplicationRecord
       loser_team.score = loser_team.score + 10
       loser_team.save!
     rescue Exception => e
-      raise ActiveRecord::Rollback.new, "Could not update teams score"
+      self.errors.add("Could not update teams score")
+      raise ActiveRecord::Rollback.new
     end
   end
 
@@ -41,7 +42,8 @@ class Match < ApplicationRecord
       self.loser_team.players.each{|player| player.score = player.score.to_i - 5
       player.save!}
     rescue Exception => e
-      raise ActiveRecord::Rollback.new, "Could not update players score"
+      self.errors.add("Could not update players score")
+      raise ActiveRecord::Rollback.new
     end
   end
 
