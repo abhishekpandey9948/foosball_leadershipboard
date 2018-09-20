@@ -10,5 +10,5 @@ class Player < ApplicationRecord
   def set_status
     self.status = ACTIVE
   end
-w
+
 end
