@@ -32,7 +32,7 @@ class MatchesController < ApplicationController
         format.html { redirect_to @match, notice: 'Match was successfully created.' }
         format.json { render :show, status: :created, location: @match }
       rescue => e
-        return render json: @match.errors, status: :unprocessable_entity
+        return render json: e.message, status: :unprocessable_entity
       end
     end
     # render json: ::Services::MatchService.new.create_match(params['match'])
