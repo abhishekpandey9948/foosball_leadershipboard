@@ -27,12 +27,12 @@ class MatchesController < ApplicationController
   # POST /matches.json
   def create
     respond_to do |format|
-      unless @match.save
+      begin
+        @match.save!
         format.html { redirect_to @match, notice: 'Match was successfully created.' }
         format.json { render :show, status: :created, location: @match }
-      else
-        format.html { render :new }
-        format.json { render json: @match.errors, status: :unprocessable_entity }
+      rescue => e
+        return render json: @match.errors, status: :unprocessable_entity
       end
     end
     # render json: ::Services::MatchService.new.create_match(params['match'])
